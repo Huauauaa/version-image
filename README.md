@@ -2,18 +2,34 @@
 
 ## Prepare
 
-1. yarn
-2. replace `data/demo.csv` with yours
+> `node`, `npm`/`yarn` is required
 
-## Run
+### install dependencies
 
-### linux
+```bash
+yarn
+```
+
+## Start
+
+### prepare data
+
+replace `data/demo.csv` with yours
+
+### run
+
+#### linux
 
 ```bash
 make run-local
 ```
 
-### windows
+#### windows
 
-`node parseCSV.js`
-`yarn dev`
+```bash
+node parseCSV.js
+```
+
+```bash
+yarn dev
+```
