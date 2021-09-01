@@ -1,7 +1,4 @@
-import data from './json/demo.json';
-import { nanoid } from 'nanoid';
-
-const nodes = data.slice(0);
+const { nanoid } = require('nanoid');
 
 function getChildren(node, nodes) {
   const childNodes = nodes.filter((item) => item[0] === node[1]);
@@ -21,13 +18,16 @@ function getChildren(node, nodes) {
 
   return children;
 }
-const [, label, lineColor, nodeColor] = nodes[0];
-const result = {
-  id: nanoid(),
-  label: label,
-  lineColor,
-  nodeColor,
-};
-result.children = getChildren(nodes[0], nodes);
 
-export default result;
+module.exports = function (data) {
+  const nodes = data.slice(0);
+  const [, label, lineColor, nodeColor] = nodes[0];
+  const result = {
+    id: nanoid(),
+    label: label,
+    lineColor,
+    nodeColor,
+  };
+  result.children = getChildren(nodes[0], nodes);
+  return result;
+};

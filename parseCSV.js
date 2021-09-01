@@ -1,5 +1,6 @@
 const fs = require('fs');
 const generateJson = require('./generateJson.js');
+const mapData = require('./formatData');
 
 const name = 'demo';
 
@@ -18,4 +19,5 @@ fs.readFile(`./data/${name}.csv`, (err, data) => {
   });
   console.log(leafs, nodes);
   generateJson(nodes, name);
+  generateJson(mapData(nodes), `${name}-format`);
 });

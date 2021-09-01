@@ -1,4 +1,4 @@
-import data from './mapData';
+import data from './json/demo.json';
 import { getColor } from './tool';
 
 import G6 from '@antv/g6';
