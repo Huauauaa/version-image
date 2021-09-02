@@ -1,4 +1,4 @@
-import data from './json/demo.json';
+import data from './json/demo-format.json';
 import { getColor } from './tool';
 
 import G6 from '@antv/g6';
