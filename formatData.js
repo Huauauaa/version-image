@@ -1,6 +1,7 @@
 const { nanoid } = require('nanoid');
 
-function getChildren(node, nodes) {
+function getChildren(node, nodes, level) {
+  level += 1;
   const childNodes = nodes.filter((item) => item[0] === node[1]);
 
   nodes = nodes.filter((item) => item[0] !== node[1]);
@@ -12,7 +13,8 @@ function getChildren(node, nodes) {
       label,
       lineColor,
       nodeColor,
-      children: getChildren(item, nodes),
+      level,
+      children: getChildren(item, nodes, level),
     };
   });
 
@@ -21,13 +23,16 @@ function getChildren(node, nodes) {
 
 module.exports = function (data) {
   const nodes = data.slice(0);
+  let level = 1;
   const [, label, lineColor, nodeColor] = nodes[0];
   const result = {
     id: nanoid(),
     label: label,
     lineColor,
     nodeColor,
+    level,
   };
-  result.children = getChildren(nodes[0], nodes);
+
+  result.children = getChildren(nodes[0], nodes, level);
   return result;
 };
