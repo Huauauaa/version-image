@@ -7,12 +7,13 @@ function getChildren(node, nodes, level) {
   nodes = nodes.filter((item) => item[0] !== node[1]);
 
   const children = childNodes.map((item) => {
-    const [, label, lineColor, nodeColor] = item;
+    const [, name, size, line, node] = item;
     return {
       id: nanoid(),
-      label,
-      lineColor,
-      nodeColor,
+      label: name,
+      lineColor: line,
+      nodeColor: node,
+      nodeSize: Number(size),
       level,
       children: getChildren(item, nodes, level),
     };
@@ -24,15 +25,16 @@ function getChildren(node, nodes, level) {
 module.exports = function (data) {
   const nodes = data.slice(0);
   let level = 1;
-  const [, label, lineColor, nodeColor] = nodes[0];
+  const [, name, size, line, node] = nodes[0];
   const result = {
     id: nanoid(),
-    label: label,
-    lineColor,
-    nodeColor,
+    label: name,
+    lineColor: line,
+    nodeColor: node,
+    nodeSize: Number(size),
     level,
+    children: getChildren(nodes[0], nodes, level),
   };
 
-  result.children = getChildren(nodes[0], nodes, level);
   return result;
 };

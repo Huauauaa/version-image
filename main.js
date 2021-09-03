@@ -1,11 +1,10 @@
 import data from './json/demo-format.json';
-import { getColor, getMaxDepth } from './tool';
+import { getColor } from './tool';
 
 import G6 from '@antv/g6';
 
 const lineColors = [];
 getColor(data, lineColors);
-const maxDepth = getMaxDepth(data);
 
 const fontSize = 15;
 
@@ -60,7 +59,7 @@ graph.node((node) => {
     style: {
       fill: node.nodeColor,
       stroke: node.nodeColor,
-      r: maxDepth + 15 - node.depth,
+      r: node.nodeSize,
     },
   };
 });
