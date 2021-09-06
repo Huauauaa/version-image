@@ -33,3 +33,13 @@ node parseCSV.js
 ```bash
 yarn dev
 ```
+
+## download image
+
+### png/jpeg/webp/bmp
+
+download directly in page
+
+### svg
+
+in package.json, downgrade `@antv/g6` to `3.2.0`, and replace `main.js` with `export-svg.js`
