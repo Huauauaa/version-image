@@ -36,10 +36,10 @@ yarn dev
 
 ## download image
 
-### png/jpeg/webp/bmp
+### png/jpeg/webp/bmpin
 
-download directly in page
+`vite.config.js`, set `isNewG6 = true`
 
 ### svg
 
-in package.json, downgrade `@antv/g6` to `3.2.0`, and replace `main.js` with `export-svg.js`
+`vite.config.js`, set `isNewG6 = false`
