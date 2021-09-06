@@ -75,3 +75,11 @@ if (typeof window !== 'undefined') {
     graph.changeSize(container.scrollWidth, container.scrollHeight);
   };
 }
+
+function download() {
+  graph.downloadFullImage(Date.now(), 'image/bmp', {
+    backgroundColor: '#fff',
+  });
+}
+
+document.querySelector('.download-button').addEventListener('click', download);
