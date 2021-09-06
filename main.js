@@ -77,7 +77,8 @@ if (typeof window !== 'undefined') {
 }
 
 function download() {
-  graph.downloadFullImage(Date.now(), 'image/bmp', {
+  const type = document.querySelector('.type-select').value;
+  graph.downloadFullImage(Date.now(), type, {
     backgroundColor: '#fff',
   });
 }
