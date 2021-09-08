@@ -1,9 +1,9 @@
 import data from './json/demo-format.json';
-import { getColor } from './tool';
+import { getAttr, getMaxDepth } from './tool';
 
 export default function () {
-  const lineColors = [];
-  getColor(data, lineColors);
+  const lineAttr = getAttr(data, {});
+  const maxDepth = getMaxDepth(data);
 
   const fontSize = 15;
 
@@ -39,11 +39,14 @@ export default function () {
   });
 
   graph.edge((edge) => {
+    const targetId = edge.target;
+
     return {
       id: edge.id,
       type: 'cubic-horizontal',
       style: {
-        stroke: lineColors[edge.target],
+        stroke: lineAttr[targetId].lineColor,
+        lineWidth: maxDepth + 25 - lineAttr[targetId].level * 2.5,
       },
     };
   });

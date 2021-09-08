@@ -1,8 +1,10 @@
-export function getColor(data, result) {
-  result[data.id] = data.lineColor;
+export function getAttr(data, result = {}) {
+  const { children, ...other } = data;
+  result[data.id] = other;
   for (let i = 0; i < data.children.length; i++) {
-    getColor(data.children[i], result);
+    getAttr(data.children[i], result);
   }
+  return result;
 }
 let maxDepth = 0;
 export function getMaxDepth(data) {
