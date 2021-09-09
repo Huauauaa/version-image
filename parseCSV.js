@@ -10,14 +10,12 @@ fs.readFile(`./data/${name}.csv`, (err, data) => {
     return;
   }
   const origin = String(data);
-  const lines = origin.split('\n').slice(1);
-  const leafs = [];
+  const lines = origin.split(/[\r\n]{1,2}/).slice(1);
   const nodes = [];
   lines.forEach((line) => {
     const cols = line.split(',');
     nodes.push(cols);
   });
-  console.log(leafs, nodes);
   generateJson(nodes, name);
   generateJson(mapData(nodes), `${name}-format`);
 });
