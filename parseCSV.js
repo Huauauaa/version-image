@@ -10,7 +10,7 @@ fs.readFile(`./data/${name}.csv`, (err, data) => {
     return;
   }
   const origin = String(data);
-  const lines = origin.split(/[\r\n]{1,2}/).slice(1);
+  const lines = origin.split(/(\r?\n)/).slice(1);
   const nodes = [];
   lines.forEach((line) => {
     const cols = line.split(',');
